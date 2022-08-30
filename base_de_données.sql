@@ -1,10 +1,10 @@
-CREATE DATABASE Client;
+CREATE DATABASE CitySport;
 
-USE Client;
+USE CitySport;
 
-CREATE USER 'faneolia'@'localhost' IDENTIFIED BY 'faneolia';
+CREATE USER 'faneolia'@'localhost' IDENTIFIED BY 'admin';
 
-GRANT SELECT, INSERT ON * . * TO 'faneolia'@'localhost';
+SELECT User, Host FROM mysql.user;
 
 
 CREATE TABLE client(
@@ -26,12 +26,12 @@ CREATE TABLE marques (
 
 CREATE TABLE chaussures (
     id_chaussures INTEGER NOT NULL AUTO_INCREMENT,
-    id_marque int NOT NULL, couleur VARCHAR (100),
-    taille VARCHAR (100), prix VARCHAR (100),
+    id_marque int NOT NULL,
+    couleur VARCHAR (100),
+    taille VARCHAR (100),
+    prix VARCHAR (100),
     PRIMARY KEY (id_chaussures),
-    INDEX par_ind (id_marque),
-    FOREIGN KEY (id_marque),
-    REFERENCES marques(id_marque)
+    FOREIGN KEY (`id_marque`) REFERENCES marques(`id_marque`)
 ) ENGINE=Innodb DEFAULT CHARSET=utf8;
 
 INSERT INTO `marques` (`id_marque`,`nom_de_la_marque`, `logo`)
